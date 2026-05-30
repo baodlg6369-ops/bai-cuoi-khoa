@@ -211,6 +211,8 @@ a {
 }
 
 .Movie-card {
+    width: 250px;
+    height: auto;
     overflow: hidden;
     background: var(--surface);
     border: 1px solid var(--line);
