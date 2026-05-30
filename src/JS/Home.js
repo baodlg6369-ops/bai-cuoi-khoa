@@ -91,7 +91,6 @@ function createMovieCardHTML(movie) {
         <article class="Movie-card" data-movie-id="${escapeHTML(movie.id)}" role="button" tabindex="0">
           <div class="movie-poster">
             <img src="${escapeHTML(posterUrl)}" alt="Poster ${escapeHTML(title)}">
-            <span class="rating">${escapeHTML(rating)}</span>
           </div>
           <div class="movie-info">
             <h3 class="Movie-title">${escapeHTML(title)}</h3>
