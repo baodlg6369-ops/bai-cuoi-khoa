@@ -1,0 +1,31 @@
+/* CSS SECTION: Register page layout */
+body {
+    background: #1f2937;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+}
+
+/* CSS SECTION: Register card */
+.auth_container {
+    max-width: 500px;
+    background-color: rgba(0, 0, 0, 0.75);
+    padding: 60px;
+    border-radius: 15px;
+
+}
+
+/* CSS SECTION: Register logo image */
+.auth_logo img {
+    max-width: 300px;
+}
+
+/* CSS SECTION: Remember me checkbox */
+.remember-me {
+    color: rgb(255, 255, 255);
+}
+

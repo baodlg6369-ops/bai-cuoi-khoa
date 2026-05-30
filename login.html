@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- SECTION: Document head and login assets -->
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- lINK CSS BOOTSTRAP -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="src/CSS/login.CSS" />
+
+
+</head>
+
+<body>
+    <!-- SECTION: Login card container -->
+    <div class="auth_container">
+        <!-- SECTION: Login logo and title -->
+        <!-- Header -->
+
+        <div class="text-center">
+            <!-- Logo -->
+            <a>
+                <i class="bi bi-play-btn-fill text-danger fs-4"></i>
+                <span class="fw-bold text-danger fs-4">Anime</span><span class="fw-bold text-primary fs-4">Hay</span>
+            </a>
+            <h4 class="text-primary py-4">Đăng Nhập</h4>
+        </div>
+        <!-- SECTION: Login form -->
+        <!-- Form -->
+        <form action="">
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                <label for="floatingInput">Email address</label>
+            </div>
+            <div class="form-floating">
+                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                <label for="floatingPassword">Password</label>
+            </div>
+
+            <div class="remember-me mt-3">
+                <input type="checkbox" id="remember-me" name="remember-me">
+                <label for="remember-me">Lưu thông tin đăng nhập</label>
+            </div>
+
+            <div class="mt-3">
+                <button class="btn btn-primary w-100 btn-lg" type="submit">Đăng Nhập</button>
+            </div>
+        </form>
+
+        <!-- Đăng Ký -->
+        <!-- SECTION: Register redirect link -->
+        <div class="text-center mt-3">
+            <span class="text-white">Bạn chưa có tài khoản ?</span>
+            <a class="text-decoration-none fw-bold" href="register.html">Đăng ký</a>
+        </div>
+    </div>
+
+
+    <!-- SECTION: External libraries and login scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+
+    <!-- Core Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <!-- Auth -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <!-- Firestore -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <!-- Firebase Config -->
+    <script src="src/JS/firebase_config.js"></script>
+    <!-- JS-logic -->
+    <script src="src/JS/login.js"></script>
+</body>
+
+</html>

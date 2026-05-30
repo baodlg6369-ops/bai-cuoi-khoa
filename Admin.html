@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<!-- SECTION: Document head and admin assets -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- LINK CSS BOOTSTRAP -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="src/CSS/Admin.CSS">
+
+    <title>AnimeHay</title>
+</head>
+
+<body>
+    <!-- SECTION: Admin loading overlay -->
+    <div id="loadingOverlay">
+        <div class="text-center py-5">
+            <div class="spinner-border text-danger mb-3" style="width:3rem;height:3rem;"></div>
+            <p class="text-white">Đang kiểm tra quyền truy cập...</p>
+        </div>
+    </div>
+
+    <!-- SECTION: Admin sidebar navigation -->
+    <aside class="sidebar">
+        <!-- Logo -->
+        <div class="navbar-brand d-flex align-items-center logo">
+            <i class="bi bi-play-btn-fill text-danger fs-3 me-2"></i>
+            <span class="fw-bold text-danger">Anime</span><span class="fw-bold text-primary">Hay</span>
+        </div>
+
+        <nav aria-label="Menu quản trị">
+            <a href="#" class="active"><i class="bi bi-film"></i> Quản lý phim</a>
+            <a href="#"><i class="bi bi-people"></i> Người dùng</a>
+            <a href="#"><i class="bi bi-gear"></i> Cài đặt</a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <button class="btn-logout" id="btnLogout" type="button">
+                <i class="bi bi-box-arrow-right"></i>
+                Đăng xuất
+            </button>
+        </div>
+    </aside>
+
+    <!-- SECTION: Admin main workspace -->
+    <main class="admin-main">
+        <!-- SECTION: Admin topbar and search -->
+        <div class="admin-topbar">
+            <div class="page-title">
+                <p class="mb-1">Bảng điều khiển</p>
+                <h1 class="h3 fw-bold mb-0">Quản trị web xem phim AnimeHay</h1>
+            </div>
+
+            <div class="d-flex align-items-center gap-3 w-100 justify-content-lg-end">
+                <div class="admin-search input-group">
+                    <span class="input-group-text bg-white border-end-0"><i class="bi bi-search"></i></span>
+                    <input type="search" class="form-control border-start-0"
+                        placeholder="Tìm phim, thể loại, tập phim...">
+                </div>
+                <div class="admin-user" title="Admin">
+                    <i class="bi bi-person-fill"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION: Admin movie management grid -->
+        <section class="row g-4">
+            <div class="col-12 col-xl-4">
+                <div class="content-panel h-100">
+                    <div class="section-title">
+                        <h2>Thêm phim mới</h2>
+                        <span class="badge text-bg-danger">Admin</span>
+                    </div>
+
+                    <!-- SECTION: Add movie form -->
+                    <form id="movieForm">
+                        <div class="mb-3">
+                            <label for="movie_title" class="form-label">Tên phim</label>
+                            <input type="text" class="form-control" id="movie_title" placeholder="VD: Solo Leveling"
+                                required>
+                        </div>
+
+                        <div class="row g-3">
+                            <div class="col-6">
+                                <label for="movie_year" class="form-label">Năm phát hành</label>
+                                <input type="number" class="form-control" id="movie_year" min="1900"
+                                    placeholder="2026" required>
+                            </div>
+
+                            <div class="col-6">
+                                <label for="movie_status" class="form-label">Trạng thái</label>
+                                <select class="form-select" id="movie_status">
+                                    <option>Đang chiếu</option>
+                                    <option>Hoàn thành</option>
+                                    <option>Sắp ra mắt</option>
+                                    <option>Ẩn phim</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 mt-3">
+                            <label for="movie_category" class="form-label">Thể loại</label>
+                            <select class="form-select" id="movie_category">
+                                <option>Hành động</option>
+                                <option>Phiêu lưu</option>
+                                <option>Học đường</option>
+                                <option>Tình cảm</option>
+                                <option>Viễn tưởng</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="movie_poster_url" class="form-label">Poster URL</label>
+                            <input type="url" class="form-control" id="movie_poster_url" placeholder="https://..."
+                                required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="movie_url" class="form-label">Movie URL</label>
+                            <input type="url" class="form-control" id="movie_url" placeholder="https://..." required>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="movie_description" class="form-label">Mô tả ngắn</label>
+                            <textarea class="form-control" id="movie_description" rows="4"
+                                placeholder="Tóm tắt nội dung phim"></textarea>
+                        </div>
+
+                        <button class="btn btn-danger w-100" type="submit">
+                            <i class="bi bi-plus-circle me-1"></i>
+                            Thêm phim
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-12 col-xl-8">
+                <!-- SECTION: Movie table panel -->
+                <div class="content-panel mb-4">
+                    <div class="section-title">
+                        <h2>Danh sách phim</h2>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-outline-secondary btn-sm" type="button">
+                                <i class="bi bi-funnel"></i>
+                            </button>
+                            <button class="btn btn-outline-danger btn-sm" type="button">
+                                <i class="bi bi-cloud-arrow-up"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive movie-list">
+                        <table class="table align-middle mb-0">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Poster</th>
+                                    <th>Tên phim</th>
+                                    <th>Năm</th>
+                                    <th>Tập</th>
+                                    <th>Trạng thái</th>
+                                    <th class="text-end">Hành động</th>
+                                </tr>
+                            </thead>
+                            <tbody id="productTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-12 col-lg-6">
+                        <!-- SECTION: Update schedule panel -->
+                        <div class="content-panel h-100">
+                            <div class="section-title">
+                                <h2>Lịch cập nhật</h2>
+                                <button class="btn btn-sm btn-outline-secondary" type="button">
+                                    <i class="bi bi-calendar-plus"></i>
+                                </button>
+                            </div>
+
+                            <div class="quick-list">
+                                <div class="quick-item">
+                                    <div>
+                                        <strong>One Piece</strong>
+                                        <span class="d-block">Tập 1125 - 20:00</span>
+                                    </div>
+                                    <span class="badge text-bg-success">Hôm nay</span>
+                                </div>
+                                <div class="quick-item">
+                                    <div>
+                                        <strong>Blue Lock</strong>
+                                        <span class="d-block">Tập 18 - 21:30</span>
+                                    </div>
+                                    <span class="badge text-bg-warning">Chờ đăng</span>
+                                </div>
+                                <div class="quick-item">
+                                    <div>
+                                        <strong>Spy x Family</strong>
+                                        <span class="d-block">Tập 9 - 19:45</span>
+                                    </div>
+                                    <span class="badge text-bg-secondary">Nháp</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-6">
+                        <!-- SECTION: Featured categories panel -->
+                        <div class="content-panel h-100">
+                            <div class="section-title">
+                                <h2>Thể loại nổi bật</h2>
+                                <button class="btn btn-sm btn-outline-danger" type="button">
+                                    <i class="bi bi-plus-lg"></i>
+                                </button>
+                            </div>
+
+                            <div class="d-flex flex-wrap gap-2">
+                                <span class="badge rounded-pill text-bg-danger">Anime</span>
+                                <span class="badge rounded-pill text-bg-dark">Hành động</span>
+                                <span class="badge rounded-pill text-bg-primary">Phiêu lưu</span>
+                                <span class="badge rounded-pill text-bg-success">Học đường</span>
+                                <span class="badge rounded-pill text-bg-warning">Tình cảm</span>
+                                <span class="badge rounded-pill text-bg-info">Viễn tưởng</span>
+                                <span class="badge rounded-pill text-bg-secondary">Movie</span>
+                            </div>
+
+                            <hr>
+
+                            <div class="d-flex align-items-center justify-content-between gap-3">
+                                <div>
+                                    <div class="fw-semibold">Bình luận cần duyệt</div>
+                                    <small class="text-muted">Kiểm tra nội dung trước khi hiển thị</small>
+                                </div>
+                                <span class="h4 mb-0 text-danger">18</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- SECTION: External libraries and admin scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+
+    <!-- Core Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <!-- Auth -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <!-- Firestore -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <!-- Firebase Config -->
+    <script src="src/JS/firebase_config.js"></script>
+    <!-- JS-logic -->
+    <script src="src/JS/Admin.js"></script>
+</body>
+
+</html>

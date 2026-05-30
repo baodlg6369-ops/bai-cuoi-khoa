@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<!-- SECTION: Document head and page assets -->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AnimeHay</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+  <!-- CSS -->
+  <link rel="stylesheet" href="src/CSS/Home.css" />
+</head>
+
+<body>
+  <!-- SECTION: Main navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark site-navbar">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="Home.html">
+        <i class="bi bi-play-btn-fill text-danger fs-3 me-2"></i>
+        <span class="fw-bold text-danger">Anime</span><span class="fw-bold text-primary">Hay</span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+        aria-controls="mainNavbar" aria-expanded="false" aria-label="Mở menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav ms-lg-4 me-auto mb-3 mb-lg-0">
+          <li class="nav-item"><a class="nav-link active" href="#">Trang chủ</a></li>
+          <li class="nav-item"><a class="nav-link" href="#movie_list">Phim mới</a></li>
+          <li class="nav-item"><a class="nav-link" href="#genres">Thể loại</a></li>
+          <li class="nav-item"><a class="nav-link" href="#reviews">Đánh giá</a></li>
+        </ul>
+
+        <form class="site-search d-flex" id="homeSearchForm" role="search">
+          <input class="form-control" type="search" placeholder="Tìm anime, phim lẻ, series..." aria-label="Search" />
+          <button class="btn btn-danger" type="submit">
+            <i class="bi bi-search"></i>
+          </button>
+        </form>
+
+        <div class="nav-actions ms-lg-3 mt-3 mt-lg-0">
+          <a href="#" class="btn btn-icon" title="Menu"><i class="bi bi-list"></i></a>
+          <a href="#" class="btn btn-icon" title="Lịch sử"><i class="bi bi-clock-history"></i></a>
+          <a href="#" class="btn btn-icon" title="Yêu thích"><i class="bi bi-bookmark"></i></a>
+          <button class="btn btn-icon" id="btnLogout" type="button" title="Đăng xuất">
+            <i class="bi bi-box-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- SECTION: Hero banner -->
+  <header class="hero-header">
+    <div class="hero-overlay">
+      <div class="container">
+        <div class="hero-content">
+          <span class="hero-badge"><i class="bi bi-lightning-charge-fill"></i> Anime mới cập nhật</span>
+          <h1>AnimeHay</h1>
+          <p>Kho phim anime, movie và series nổi bật với giao diện dễ xem, tìm kiếm nhanh và lịch cập nhật rõ ràng.</p>
+          <div class="hero-buttons">
+            <a href="#movie_list" class="btn btn-danger btn-lg">
+              <i class="bi bi-play-fill me-1"></i>
+              Xem ngay
+            </a>
+            <a href="#genres" class="btn btn-outline-light btn-lg">Khám phá thể loại</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- SECTION: Main page content -->
+  <main>
+    <!-- SECTION: Firestore movie list -->
+    <section class="section movie-section">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">Đề xuất hôm nay</span>
+          <h2>Danh sách bộ phim nổi bật</h2>
+        </div>
+        <a href="#movie_list" class="section-link">Xem tất cả <i class="bi bi-arrow-right"></i></a>
+      </div>
+
+      <div id="movie_list"></div>
+      <p class="search-empty d-none" id="homeSearchEmpty">Không tìm thấy phim phù hợp.</p>
+    </section>
+
+    <!-- SECTION: Genre shortcuts -->
+    <section class="section genre-section" id="genres">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">Chọn nhanh</span>
+          <h2>Thể loại phổ biến</h2>
+        </div>
+      </div>
+
+      <div class="genre-grid">
+        <a href="#"><i class="bi bi-fire"></i> Hành động</a>
+        <a href="#"><i class="bi bi-compass"></i> Phiêu lưu</a>
+        <a href="#"><i class="bi bi-stars"></i> Viễn tưởng</a>
+        <a href="#"><i class="bi bi-heart"></i> Tình cảm</a>
+        <a href="#"><i class="bi bi-mortarboard"></i> Học đường</a>
+        <a href="#"><i class="bi bi-camera-reels"></i> Movie</a>
+      </div>
+    </section>
+
+    <!-- SECTION: Customer reviews -->
+    <section class="reviews-section" id="reviews">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">Cảm nhận</span>
+            <h2>Đánh giá của khách hàng</h2>
+          </div>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="review-card">
+              <div class="review-stars">★★★★☆</div>
+              <p>"Website xem anime rất tuyệt! Hình ảnh rõ nét, load nhanh và phim cập nhật liên tục."</p>
+              <h3>Nguyễn Minh</h3>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="review-card">
+              <div class="review-stars">★★★★★</div>
+              <p>"Giao diện dễ dùng, tìm kiếm nhanh. Mình có thể xem trên điện thoại rất tiện lợi."</p>
+              <h3>Trần Thu</h3>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="review-card">
+              <div class="review-stars">★★★★☆</div>
+              <p>"Mong là có thêm nhiều bộ anime mới. Nhưng nhìn chung web này rất đáng để xem."</p>
+              <h3>Lê Hoàng</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- SECTION: Footer links and partner logos -->
+  <footer>
+    <div class="footer-left">
+      <a class="footer-brand" href="Home.html">
+        <i class="bi bi-play-btn-fill text-danger"></i>
+        <span><strong>Anime</strong>Hay</span>
+      </a>
+      <p>&copy; 2025 AnimeHay. All rights reserved.</p>
+      <p>
+        <a href="#">Trang chủ</a>
+        <a href="#">Giới thiệu</a>
+        <a href="#">Liên hệ</a>
+      </p>
+    </div>
+
+    <div class="footer-right">
+      <div class="brand">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" alt="ChatGPT Logo">
+        <span>ChatGPT</span>
+      </div>
+      <div class="brand">
+        <img src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo-shadow.png" alt="Bootstrap Logo">
+        <span>Bootstrap</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SECTION: External libraries and page scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Core Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <!-- Auth -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+  <!-- Firestore -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+  <!-- Firebase Config -->
+  <script src="src/JS/firebase_config.js"></script>
+  <!-- JS-logic -->
+  <script src="src/JS/Home.js"></script>
+</body>
+
+</html>
