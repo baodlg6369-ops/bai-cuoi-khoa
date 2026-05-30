@@ -212,7 +212,7 @@ a {
 
 .Movie-card {
     width: 250px;
-    height: auto;
+    height: 350px;
     overflow: hidden;
     background: var(--surface);
     border: 1px solid var(--line);
